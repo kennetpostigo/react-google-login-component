@@ -35,7 +35,7 @@ class Login extends React.Component{
   render () {
     return (
       <div>
-        <GoogleLogin socialId="692830972378-r3c2rmse5caabprodv070edmo4aa4lf5.apps.googleusercontent.com"
+        <GoogleLogin socialId="yourClientID"
                      class="google-login"
                      scope="profile"
                      responseHandler={this.responseGoogle}
