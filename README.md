@@ -29,6 +29,7 @@ class Login extends React.Component{
 
   responseFacebook (response) {
     console.log(response);
+    //anything else you want to do(save to localStorage)...
   }
 
   responseGoogle (googleUser) {
