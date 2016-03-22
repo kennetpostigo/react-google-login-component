@@ -27,14 +27,10 @@ class Login extends React.Component{
     super(props, context);
   }
 
-  responseFacebook (response) {
-    console.log(response);
-    //anything else you want to do(save to localStorage)...
-  }
-
   responseGoogle (googleUser) {
     var id_token = googleUser.getAuthResponse().id_token;
     console.log({accessToken: id_token});
+    //anything else you want to do(save to localStorage)...
   }
 
   render () {
