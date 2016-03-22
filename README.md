@@ -9,6 +9,10 @@ your existing project and get the benefits of Google Login. It's a plug and
 play component that'll fit in your workflow if your using standalone React or
 React with Redux.
 
+You can find login with Facebook [here](https://github.com/kennetpostigo/react-facebook-login-component)
+
+##### Up to date with the latest API Version
+
 ## Usage
 ```bash
 npm install --save react-google-login-component
