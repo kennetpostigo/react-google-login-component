@@ -19,7 +19,7 @@ npm install --save react-google-login-component
 ```
 ```js
 import React from 'react';
-import GoogleLogin from 'react-google-login-component';
+import { GoogleLogin } from 'react-google-login-component';
 
 class Login extends React.Component{
 
