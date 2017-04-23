@@ -99,7 +99,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function GoogleLogin(props) {
 	    _classCallCheck(this, GoogleLogin);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(GoogleLogin).call(this, props));
+	    return _possibleConstructorReturn(this, (GoogleLogin.__proto__ || Object.getPrototypeOf(GoogleLogin)).call(this, props));
 	  }
 
 	  _createClass(GoogleLogin, [{
@@ -153,7 +153,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        null,
 	        _react2.default.createElement(
 	          'button',
-	          { className: this.props.class, onClick: this.clickHandler.bind(this) },
+	          { className: this.props.class, style: this.props.style, onClick: this.clickHandler.bind(this) },
+	          this.props.children,
 	          this.props.buttonText
 	        )
 	      );
