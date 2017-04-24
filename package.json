@@ -1,6 +1,6 @@
 {
   "name": "react-google-login-component",
-  "version": "0.5.2",
+  "version": "0.7.0",
   "description": "React Component that lets you instantly login through google platform",
   "main": "dist/react-google-login-component",
   "scripts": {
