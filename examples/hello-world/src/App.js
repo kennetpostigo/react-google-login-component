@@ -13,6 +13,7 @@ class App extends Component {
       <div>
         <GoogleLogin socialId="yourClientID"
                      class="google-login"
+                     icon="my-icon-classname"
                      scope="profile"
                      responseHandler={this.responseGoogle}
                      buttonText="Login With Google"/>
