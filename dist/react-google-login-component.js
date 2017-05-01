@@ -151,6 +151,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return _react2.default.createElement(
 	        'div',
 	        null,
+	        this.props.icon && _react2.default.createElement('span', { className: this.props.icon, onClick: this.clickHandler.bind(this) }),
 	        _react2.default.createElement(
 	          'button',
 	          { className: this.props.class, style: this.props.style, onClick: this.clickHandler.bind(this) },
