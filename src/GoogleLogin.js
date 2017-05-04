@@ -1,6 +1,5 @@
 import React from 'react';
 
-let gapi;
 let auth2;
 
 export default class GoogleLogin extends React.Component {
@@ -15,7 +14,7 @@ export default class GoogleLogin extends React.Component {
                 window.gapi.auth2.init({
                     client_id: socialId,
                     fetch_basic_profile: false,
-                    scope: scope
+                    scope
                 });
             });
         };
