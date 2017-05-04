@@ -49,6 +49,7 @@ export default class GoogleLogin extends React.Component {
         return (
             <button className={this.props.class} onClick={ this.clickHandler.bind(this) }>
                 {this.props.buttonText}
+                {this.props.children}
             </button>
         );
     }
