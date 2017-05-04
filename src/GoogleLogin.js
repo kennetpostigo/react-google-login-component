@@ -10,7 +10,7 @@ export default class GoogleLogin extends React.Component {
     componentDidMount() {
         let socialId = this.props.socialId, scope = this.props.scope;
         window.googlePlatformReadyCb = () => {
-            window.gapi.load('auth2', function () {
+            window.gapi.load('auth2', () => {
                 window.gapi.auth2.init({
                     client_id: socialId,
                     fetch_basic_profile: false,
