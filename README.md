@@ -37,7 +37,7 @@ class Login extends React.Component{
     return (
       <div>
         <GoogleLogin socialId="yourClientID"
-                     class="google-login"
+                     className="google-login"
                      scope="profile"
                      responseHandler={this.responseGoogle}
                      buttonText="Login With Google"/>

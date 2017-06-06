@@ -1,23 +1,23 @@
 import React from 'react';
 
-export default class GoogleLogin extends React.Component{
+export default class GoogleLogin extends React.Component {
   constructor(props) {
     super(props);
   }
 
   componentDidMount () {
     (function(d, s, id){
-     var js, gs = d.getElementsByTagName(s)[0];
+     let js, gs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
      js = d.createElement(s); js.id = id;
-     js.src = 'https://apis.google.com/js/platform.js'
+     js.src = 'https://apis.google.com/js/platform.js';
      gs.parentNode.insertBefore(js, gs);
    }(document, 'script', 'google-platform'));
   }
 
   checkLoginState (response) {
     if (auth2.isSignedIn.get()) {
-      var profile = auth2.currentUser.get().getBasicProfile();
+      const profile = auth2.currentUser.get().getBasicProfile();
     } else {
       if(this.props.responseHandler) {
         this.props.responseHandler({status: response.status});
@@ -43,11 +43,16 @@ export default class GoogleLogin extends React.Component{
   }
 
   render () {
+      const {
+        socialId, scope, responseHandler,
+        children, buttonText, ...props
+      } = this.props;
+
     return (
       <div>
-        <button className={this.props.class} style={this.props.style} onClick={ this.clickHandler.bind(this) }>
-          {this.props.children}
-          {this.props.buttonText}
+        <button {...props} onClick={this.clickHandler.bind(this)}>
+          {children}
+          {buttonText}
         </button>
       </div>
     )

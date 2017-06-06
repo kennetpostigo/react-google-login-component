@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { GoogleLogin } from 'react-google-login-component';
+import { GoogleLogin } from '../../../dist/react-google-login-component';
 
 class App extends Component {
   responseGoogle (googleUser) {
@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <div>
         <GoogleLogin socialId="yourClientID"
-                     class="google-login"
+                     className="google-login"
                      scope="profile"
                      responseHandler={this.responseGoogle}
                      buttonText="Login With Google"/>
