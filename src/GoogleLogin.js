@@ -43,18 +43,16 @@ export default class GoogleLogin extends React.Component {
   }
 
   render () {
-      const {
-        socialId, scope, responseHandler,
-        children, buttonText, ...props
-      } = this.props;
+    const {
+      socialId, scope, responseHandler,
+      children, buttonText, ...props
+    } = this.props;
 
     return (
-      <div>
-        <button {...props} onClick={this.clickHandler.bind(this)}>
-          {children}
-          {buttonText}
-        </button>
-      </div>
+      <button {...props} onClick={this.clickHandler.bind(this)}>
+        {children}
+        {buttonText}
+      </button>
     )
   }
 }

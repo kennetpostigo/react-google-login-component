@@ -161,14 +161,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	          props = _objectWithoutProperties(_props, ['socialId', 'scope', 'responseHandler', 'children', 'buttonText']);
 
 	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'button',
-	          _extends({}, props, { onClick: this.clickHandler.bind(this) }),
-	          children,
-	          buttonText
-	        )
+	        'button',
+	        _extends({}, props, { onClick: this.clickHandler.bind(this) }),
+	        children,
+	        buttonText
 	      );
 	    }
 	  }]);
