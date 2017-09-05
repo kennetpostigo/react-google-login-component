@@ -3,16 +3,34 @@ import React from 'react';
 export default class GoogleLogin extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      disabled: true
+    };
   }
 
-  componentDidMount () {
-    (function(d, s, id){
-     let js, gs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = 'https://apis.google.com/js/platform.js';
-     gs.parentNode.insertBefore(js, gs);
-   }(document, 'script', 'google-platform'));
+  componentDidMount() {
+    const { socialId, scope } = this.props;
+    ((d, s, id, callback) => {
+      let js, gs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://apis.google.com/js/platform.js';
+      gs.parentNode.insertBefore(js, gs);
+      js.onload = callback;
+    })(document, 'script', 'google-platform', () => {
+      gapi.load('auth2', () => {
+        this.setState({
+          disabled: false
+        });
+        if (!gapi.auth2.getAuthInstance()) {
+          gapi.auth2.init({
+            client_id: socialId,
+            fetch_basic_profile: false,
+            scope: scope
+          });
+        }
+      });
+    });
   }
 
   checkLoginState (response) {
@@ -26,20 +44,8 @@ export default class GoogleLogin extends React.Component {
   }
 
   clickHandler () {
-    var socialId = this.props.socialId,
-        responseHandler = this.props.responseHandler,
-        scope = this.props.scope;
-
-    gapi.load('auth2', function() {
-      var auth2 = gapi.auth2.init({
-        client_id: socialId,
-        fetch_basic_profile: false,
-        scope: scope
-      });
-      auth2.signIn().then(function(googleUser) {
-        responseHandler(googleUser);
-      });
-    });
+    const auth2 = gapi.auth2.getAuthInstance();
+    auth2.signIn().then(googleUser => this.props.responseHandler(googleUser));
   }
 
   render () {
@@ -47,6 +53,8 @@ export default class GoogleLogin extends React.Component {
       socialId, scope, responseHandler,
       children, buttonText, ...props
     } = this.props;
+
+    props.disabled = this.state.disabled || props.disabled;
 
     return (
       <button {...props} onClick={this.clickHandler.bind(this)}>

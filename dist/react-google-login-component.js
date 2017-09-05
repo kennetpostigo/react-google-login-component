@@ -103,13 +103,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function GoogleLogin(props) {
 	    _classCallCheck(this, GoogleLogin);
 
-	    return _possibleConstructorReturn(this, (GoogleLogin.__proto__ || Object.getPrototypeOf(GoogleLogin)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (GoogleLogin.__proto__ || Object.getPrototypeOf(GoogleLogin)).call(this, props));
+
+	    _this.state = {
+	      disabled: true
+	    };
+	    return _this;
 	  }
 
 	  _createClass(GoogleLogin, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      (function (d, s, id) {
+	      var _this2 = this;
+
+	      var _props = this.props,
+	          socialId = _props.socialId,
+	          scope = _props.scope;
+
+	      (function (d, s, id, callback) {
 	        var js = void 0,
 	            gs = d.getElementsByTagName(s)[0];
 	        if (d.getElementById(id)) {
@@ -118,7 +129,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	        js = d.createElement(s);js.id = id;
 	        js.src = 'https://apis.google.com/js/platform.js';
 	        gs.parentNode.insertBefore(js, gs);
-	      })(document, 'script', 'google-platform');
+	        js.onload = callback;
+	      })(document, 'script', 'google-platform', function () {
+	        gapi.load('auth2', function () {
+	          _this2.setState({
+	            disabled: false
+	          });
+	          if (!gapi.auth2.getAuthInstance()) {
+	            gapi.auth2.init({
+	              client_id: socialId,
+	              fetch_basic_profile: false,
+	              scope: scope
+	            });
+	          }
+	        });
+	      });
 	    }
 	  }, {
 	    key: 'checkLoginState',
@@ -134,31 +159,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'clickHandler',
 	    value: function clickHandler() {
-	      var socialId = this.props.socialId,
-	          responseHandler = this.props.responseHandler,
-	          scope = this.props.scope;
+	      var _this3 = this;
 
-	      gapi.load('auth2', function () {
-	        var auth2 = gapi.auth2.init({
-	          client_id: socialId,
-	          fetch_basic_profile: false,
-	          scope: scope
-	        });
-	        auth2.signIn().then(function (googleUser) {
-	          responseHandler(googleUser);
-	        });
+	      var auth2 = gapi.auth2.getAuthInstance();
+	      auth2.signIn().then(function (googleUser) {
+	        return _this3.props.responseHandler(googleUser);
 	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _props = this.props,
-	          socialId = _props.socialId,
-	          scope = _props.scope,
-	          responseHandler = _props.responseHandler,
-	          children = _props.children,
-	          buttonText = _props.buttonText,
-	          props = _objectWithoutProperties(_props, ['socialId', 'scope', 'responseHandler', 'children', 'buttonText']);
+	      var _props2 = this.props,
+	          socialId = _props2.socialId,
+	          scope = _props2.scope,
+	          responseHandler = _props2.responseHandler,
+	          children = _props2.children,
+	          buttonText = _props2.buttonText,
+	          props = _objectWithoutProperties(_props2, ['socialId', 'scope', 'responseHandler', 'children', 'buttonText']);
+
+	      props.disabled = this.state.disabled || props.disabled;
 
 	      return _react2.default.createElement(
 	        'button',
