@@ -22,11 +22,13 @@ export default class GoogleLogin extends React.Component {
         this.setState({
           disabled: false
         });
-        gapi.auth2.init({
-          client_id: socialId,
-          fetch_basic_profile: false,
-          scope: scope
-        });
+        if (!gapi.auth2.getAuthInstance()) {
+          gapi.auth2.init({
+            client_id: socialId,
+            fetch_basic_profile: false,
+            scope: scope
+          });
+        }
       });
     });
   }

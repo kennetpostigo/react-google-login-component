@@ -135,11 +135,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	          _this2.setState({
 	            disabled: false
 	          });
-	          gapi.auth2.init({
-	            client_id: socialId,
-	            fetch_basic_profile: false,
-	            scope: scope
-	          });
+	          if (!gapi.auth2.getAuthInstance()) {
+	            gapi.auth2.init({
+	              client_id: socialId,
+	              fetch_basic_profile: false,
+	              scope: scope
+	            });
+	          }
 	        });
 	      });
 	    }
