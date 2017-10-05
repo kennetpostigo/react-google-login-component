@@ -25,7 +25,7 @@ export default class GoogleLogin extends React.Component {
         if (!gapi.auth2.getAuthInstance()) {
           gapi.auth2.init({
             client_id: socialId,
-            fetch_basic_profile: false,
+            fetch_basic_profile: true,
             scope: scope
           });
         }
