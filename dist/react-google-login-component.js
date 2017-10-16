@@ -118,7 +118,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      var _props = this.props,
 	          socialId = _props.socialId,
-	          scope = _props.scope;
+	          scope = _props.scope,
+	          fetchBasicProfile = _props.fetchBasicProfile;
 
 	      (function (d, s, id, callback) {
 	        var js = void 0,
@@ -138,7 +139,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          if (!gapi.auth2.getAuthInstance()) {
 	            gapi.auth2.init({
 	              client_id: socialId,
-	              fetch_basic_profile: false,
+	              fetch_basic_profile: fetchBasicProfile,
 	              scope: scope
 	            });
 	          }
@@ -172,10 +173,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var _props2 = this.props,
 	          socialId = _props2.socialId,
 	          scope = _props2.scope,
+	          fetchBasicProfile = _props2.fetchBasicProfile,
 	          responseHandler = _props2.responseHandler,
 	          children = _props2.children,
 	          buttonText = _props2.buttonText,
-	          props = _objectWithoutProperties(_props2, ['socialId', 'scope', 'responseHandler', 'children', 'buttonText']);
+	          props = _objectWithoutProperties(_props2, ['socialId', 'scope', 'fetchBasicProfile', 'responseHandler', 'children', 'buttonText']);
 
 	      props.disabled = this.state.disabled || props.disabled;
 
@@ -192,6 +194,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_react2.default.Component);
 
 	exports.default = GoogleLogin;
+
+
+	GoogleLogin.defaultProps = {
+	  fetchBasicProfile: false,
+	  scope: 'profile'
+	};
 
 /***/ },
 /* 2 */
