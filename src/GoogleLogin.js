@@ -9,7 +9,7 @@ export default class GoogleLogin extends React.Component {
   }
 
   componentDidMount() {
-    const { socialId, scope, fetchBasicProfile } = this.props;
+    const { socialId, scope, fetchBasicProfile, prompt } = this.props;
     ((d, s, id, callback) => {
       let js, gs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) { return; }
@@ -26,6 +26,7 @@ export default class GoogleLogin extends React.Component {
           gapi.auth2.init({
             client_id: socialId,
             fetch_basic_profile: fetchBasicProfile,
+            prompt: prompt,
             scope: scope
           });
         }
@@ -50,7 +51,7 @@ export default class GoogleLogin extends React.Component {
 
   render () {
     const {
-      socialId, scope, fetchBasicProfile, responseHandler,
+      socialId, scope, fetchBasicProfile, responseHandler, prompt,
       children, buttonText, ...props
     } = this.props;
 
@@ -67,5 +68,6 @@ export default class GoogleLogin extends React.Component {
 
 GoogleLogin.defaultProps = {
   fetchBasicProfile: false,
-  scope: 'profile'
+  scope: 'profile',
+  prompt: 'none'
 }
