@@ -69,5 +69,5 @@ export default class GoogleLogin extends React.Component {
 GoogleLogin.defaultProps = {
   fetchBasicProfile: false,
   scope: 'profile',
-  prompt: 'none'
+  prompt: 'consent'
 }

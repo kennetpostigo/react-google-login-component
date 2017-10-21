@@ -202,7 +202,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	GoogleLogin.defaultProps = {
 	  fetchBasicProfile: false,
 	  scope: 'profile',
-	  prompt: 'none'
+	  prompt: 'consent'
 	};
 
 /***/ },
