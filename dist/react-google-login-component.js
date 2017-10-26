@@ -125,12 +125,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var js = void 0,
 	            gs = d.getElementsByTagName(s)[0];
 	        if (d.getElementById(id)) {
-	          return;
+	          _this2.setState({
+	            disabled: false
+	          });
+	        } else {
+	          js = d.createElement(s);js.id = id;
+	          js.src = 'https://apis.google.com/js/platform.js';
+	          gs.parentNode.insertBefore(js, gs);
+	          js.onload = callback;
 	        }
-	        js = d.createElement(s);js.id = id;
-	        js.src = 'https://apis.google.com/js/platform.js';
-	        gs.parentNode.insertBefore(js, gs);
-	        js.onload = callback;
 	      })(document, 'script', 'google-platform', function () {
 	        gapi.load('auth2', function () {
 	          _this2.setState({

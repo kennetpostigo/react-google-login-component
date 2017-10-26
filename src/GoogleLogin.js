@@ -12,11 +12,16 @@ export default class GoogleLogin extends React.Component {
     const { socialId, scope, fetchBasicProfile } = this.props;
     ((d, s, id, callback) => {
       let js, gs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) { return; }
-      js = d.createElement(s); js.id = id;
-      js.src = 'https://apis.google.com/js/platform.js';
-      gs.parentNode.insertBefore(js, gs);
-      js.onload = callback;
+      if (d.getElementById(id)) { 
+        this.setState({
+          disabled: false
+        });
+      } else {
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://apis.google.com/js/platform.js';
+        gs.parentNode.insertBefore(js, gs);
+        js.onload = callback;
+      }
     })(document, 'script', 'google-platform', () => {
       gapi.load('auth2', () => {
         this.setState({
