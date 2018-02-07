@@ -1,6 +1,6 @@
 {
   "name": "react-google-login-component",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "React Component that lets you instantly login through google platform",
   "main": "dist/react-google-login-component",
   "scripts": {
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/kennetpostigo/react-google-login-component#readme",
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0"
+    "react": "^0.14.0 || ^15.0.0 || ^16.0.0"
   },
   "devDependencies": {
     "babel-cli": "6.4.0",
