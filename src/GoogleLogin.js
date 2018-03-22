@@ -50,7 +50,10 @@ export default class GoogleLogin extends React.Component {
 
   clickHandler () {
     const auth2 = gapi.auth2.getAuthInstance();
-    auth2.signIn().then(googleUser => this.props.responseHandler(googleUser));
+    const options = {
+      prompt: this.props.prompt
+    }
+    auth2.signIn(options).then(googleUser => this.props.responseHandler(googleUser));
   }
 
   render () {
@@ -72,5 +75,6 @@ export default class GoogleLogin extends React.Component {
 
 GoogleLogin.defaultProps = {
   fetchBasicProfile: false,
-  scope: 'profile'
+  scope: 'profile',
+  prompt: '',
 }

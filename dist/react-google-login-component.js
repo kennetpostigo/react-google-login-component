@@ -166,7 +166,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var _this3 = this;
 
 	      var auth2 = gapi.auth2.getAuthInstance();
-	      auth2.signIn().then(function (googleUser) {
+	      var options = {
+	        prompt: this.props.prompt
+	      };
+	      auth2.signIn(options).then(function (googleUser) {
 	        return _this3.props.responseHandler(googleUser);
 	      });
 	    }
@@ -201,7 +204,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	GoogleLogin.defaultProps = {
 	  fetchBasicProfile: false,
-	  scope: 'profile'
+	  scope: 'profile',
+	  prompt: ''
 	};
 
 /***/ },
