@@ -17,6 +17,9 @@ You can find login with Facebook [here](https://github.com/kennetpostigo/react-f
 ```bash
 npm install --save react-google-login-component
 ```
+```bash
+npm install --save @bit/kennetpostigo.login.facebook-login
+```
 ```js
 import React from 'react';
 import { GoogleLogin } from 'react-google-login-component';
