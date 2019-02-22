@@ -7,6 +7,7 @@
     "clear": "rm -rf dist && mkdir dist",
     "build:develop": "cross-env NODE_ENV=development webpack src/index.js dist/react-google-login-component.js",
     "build:production": "cross-env NODE_ENV=production webpack src/index.js dist/react-google-login-component.min.js",
+    "publish:bitsrc": "bit tag -a && bit export kennetpostigo.login",
     "build:publish": "npm run build:develop && npm run build:production"
   },
   "repository": {
